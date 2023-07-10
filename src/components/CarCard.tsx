@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import Image from 'next/image';
 import { CarProps } from '../../types';
 import CustomButton from './CustomButton';
-import { calculateCarRent } from '../../utils';
+import { calculateCarRent, generateCarImageUrl } from '../../utils';
 import CarDetails from './CarDetails';
 
 interface CarCardProps {
@@ -14,6 +14,7 @@ function CarCard({car} : CarCardProps) {
   const {city_mpg, year, make, model, transmission, drive } = car;
 
   const carRent = calculateCarRent(city_mpg, year);
+  console.log(generateCarImageUrl(car));
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -36,7 +37,7 @@ function CarCard({car} : CarCardProps) {
         <div className='relative w-full h-40 object-contain my-3'>
             <Image 
              className='object-contain'
-             src='/hero.png' 
+             src={generateCarImageUrl(car)} 
              fill
              alt='car_model'
              priority/>

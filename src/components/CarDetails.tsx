@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
+import { generateCarImageUrl } from '../../utils';
 
 interface CarDetailsProps {
   isOpen: boolean,
@@ -12,6 +13,8 @@ interface CarDetailsProps {
 }
 
 const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
+  
+  // console.log(generateCarImageUrl(car));
 
   return (
     <>
@@ -28,8 +31,11 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
            enterTo='opacity-100'
            leave='ease-in duration-200'
            leaveFrom='opacity-100'
-           leaveTo='opacity-0'>
-            <div className='fixed inset-0 bg-black bg-opacity-25'></div>
+           leaveTo='opacity-0'
+          >
+            <div 
+             className='fixed inset-0 bg-black bg-opacity-25'
+            />
           </Transition.Child>
           <div className='fixed inset-0 overflow-y-auto'>
             <div className='flex min-h-full items-center justify-center p-4 text-center'>
@@ -43,7 +49,7 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
                leaveTo='opacity-0 scale-95'
               >
               <Dialog.Panel 
-               className='relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white text-left shadow-xl transition-all flex-col gap-5'>
+               className='relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-xl transition-all flex-col gap-5 '>
                 <button 
                  className='absolute top-2 right-2 z-10 w-fit bg-primary-blue-100 rounded-full'
                  type='button'
@@ -61,7 +67,7 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
                   <div className='relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg'>
                     <Image 
                     className='object-contain'
-                    src='/hero.png' 
+                    src={generateCarImageUrl(car)} 
                     fill
                     alt='car_model'
                     priority
@@ -72,7 +78,7 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                       <Image 
                       className='object-contain'
-                      src='/hero.png' 
+                      src={generateCarImageUrl(car,'29')} 
                       fill
                       alt='car_model'
                       priority
@@ -81,7 +87,7 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                       <Image 
                       className='object-contain'
-                      src='/hero.png' 
+                      src={generateCarImageUrl(car,'33')} 
                       fill
                       alt='car_model'
                       priority
@@ -90,7 +96,7 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
                       <Image 
                       className='object-contain'
-                      src='/hero.png' 
+                      src={generateCarImageUrl(car,'13')} 
                       fill
                       alt='car_model'
                       priority
@@ -111,7 +117,7 @@ const CarDetails = ({isOpen,closeModal,car} : CarDetailsProps) => {
                         <h4 className='text-grey capitalize'>
                           {key.replace("_", " ")}
                         </h4>
-                        <p className=''>
+                        <p className='text-black-100 font-semibold capitalize'>
                           {value}
                         </p>
                       </div>
