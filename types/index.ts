@@ -18,6 +18,7 @@ export interface SearchManufacturerProps {
 export interface CustomFilterProps {
     title: string;
 }
+
 export interface CarProps {
     city_mpg:number;
     class:string;
@@ -31,4 +32,12 @@ export interface CarProps {
     model:string;
     transmission:string;
     year:number;
+}
+
+export interface FilterProps {
+    manufacturer: string,
+    year: number,
+    fuel: string,
+    limit: number,
+    model: string,
 }
