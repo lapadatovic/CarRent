@@ -14,7 +14,6 @@ function CarCard({car} : CarCardProps) {
   const {city_mpg, year, make, model, transmission, drive } = car;
 
   const carRent = calculateCarRent(city_mpg, year);
-  console.log(generateCarImageUrl(car));
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -43,7 +42,7 @@ function CarCard({car} : CarCardProps) {
              priority/>
         </div>
         <div className='relative flex w-full mt-2'>
-            <div className='flex group-hover:invisible w-full justify-between text-gray'>
+            <div className='flex group-hover:invisible w-full justify-between text-grey'>
                 <div className='flex flex-col justify-center items-center gap-2'>
                     <Image
                       src='/steering-wheel.svg'
